@@ -22,7 +22,7 @@ public class CategoryService {
 
     @GetMapping
     public List<Category> getCategories(){
-        return categoryRepository.findAll();
+        return categoryRepository.findAllByOrderByNameAsc();
     }
 
     public Category getCategoryById(Long id) {

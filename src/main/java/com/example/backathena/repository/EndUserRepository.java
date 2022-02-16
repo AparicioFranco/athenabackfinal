@@ -1,8 +1,10 @@
 package com.example.backathena.repository;
 
+import com.example.backathena.entity.Comment;
 import com.example.backathena.entity.EndUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface EndUserRepository extends JpaRepository<EndUser, Long> {

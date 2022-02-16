@@ -4,7 +4,9 @@ import com.example.backathena.entity.Book;
 import com.example.backathena.entity.EndUser;
 import com.example.backathena.entity.User;
 import com.example.backathena.repository.BookRepository;
+import com.example.backathena.repository.CommentRepository;
 import com.example.backathena.repository.EndUserRepository;
+import com.example.backathena.repository.PostRepository;
 import org.apache.tomcat.jni.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,11 +20,16 @@ import java.util.Optional;
 public class EndUserService {
 
     private final EndUserRepository endUserRepository;
+    private final CommentRepository commentRepository;
+    private final PostRepository postRepository;
+
 
 
     @Autowired
-    public EndUserService(EndUserRepository endUserRepository){
+    public EndUserService(EndUserRepository endUserRepository, CommentRepository commentRepository, PostRepository postRepository){
+        this.commentRepository = commentRepository;
         this.endUserRepository = endUserRepository;
+        this.postRepository = postRepository;
     }
 
     public Optional<EndUser> getEndUserById(Long userId) {
@@ -53,5 +60,13 @@ public class EndUserService {
         }else{
             return new EndUser();
         }
+    }
+
+    public int getNumberOfComments(Long userId) {
+        return commentRepository.findAllByUserId(userId).size();
+    }
+
+    public int getNumberOfPosts(Long userId) {
+        return postRepository.findAllByUserId(userId).size();
     }
 }

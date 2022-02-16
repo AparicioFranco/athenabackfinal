@@ -70,4 +70,13 @@ public class EndUserController {
         return endUserService.login(user);
     }
 
+    @GetMapping("/comments/{userId}")
+    public int getNumberOfComments(@PathVariable Long userId){
+        return endUserService.getNumberOfComments(userId);
+    }
+
+    @GetMapping("/posts/{userId}")
+    public int getNumberOfPosts(@PathVariable Long userId){
+        return endUserService.getNumberOfPosts(userId);
+    }
 }

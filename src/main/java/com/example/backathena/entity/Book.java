@@ -33,14 +33,16 @@ public class Book {
     private String description;
     private Long pageCount;
     private String image;
+    private String pdfLink;
 
-    public Book(String title, Author author, Category mainCategory, String description, Long pageCount, String image) {
+    public Book(String title, Author author, Category mainCategory, String description, Long pageCount, String image, String pdfLink) {
         this.title = title;
         this.author = author;
         this.mainCategory = mainCategory;
         this.description = description;
         this.pageCount = pageCount;
         this.image = image;
+        this.pdfLink = pdfLink;
     }
 
 
@@ -62,6 +64,14 @@ public class Book {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPdfLink() {
+        return pdfLink;
+    }
+
+    public void setPdfLink(String pdfLink) {
+        this.pdfLink = pdfLink;
     }
 
     public Set<EndUser> getUsersBookshelf() {
